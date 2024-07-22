@@ -1,34 +1,59 @@
 ﻿@model List<CategoryModel>
 
-<h1>Category</h1>
-<table class="table table-bordered table-striped">
-    <thead>
-    <tr>
-        <th>
-            Category Name
-        </th>
-        <th>
-            Category Description
-        </th>
-        <th>
-            DisplayOrder
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-        @foreach(var obj in Model.OrderBy(u=>u.DisplayOrder))
-        {
+<div class="container">
+    <div class="row pt-4 pd-23">
+        <div class="col-6">
+            <h2 class="text-primary">
+                Category List
+            </h2>
+        </div>
+        <div class=" col-6 text-end">
+            <a asp-action="Create" asp-controller="Category" class="btn btn-primary">
+                Create New Category
+            </a>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <thead>
             <tr>
-                <td>
-                    @obj.CategoryName
-                </td>
-                <td>
-                    @obj.CategoryDescription
-                </td>
-                <td>
-                    @obj.DisplayOrder
-                </td>
+                <th>
+                    Category Name
+                </th>
+                <th>
+                    Category Description
+                </th>
+                <th>
+                    DisplayOrder
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model.OrderBy(u => u.DisplayOrder))
+            {
+                <tr>
+                    <td>
+                        @obj.CategoryName
+                    </td>
+                    <td>
+                        @obj.CategoryDescription
+                    </td>
+                    <td>
+                        @obj.DisplayOrder
+                    </td>
+                    <td>
+                        <div class=" w-75 btn-group" role="group">
+                            <a asp-controller="Category" asp-action="Edit" asp-route-id ="@obj.CategoeyID" class="btn btn-primary mx-2">
+                                Edit
+                            </a>
+                            <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.CategoeyID" class="btn btn-danger mx-2">
+                                Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
