@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProjectEcommerce.Data;
+using ProjectEcommerce.DataAccess.Data;
 using ProjectEcommerce.Models;
 
 namespace ProjectEcommerce.Controllers
